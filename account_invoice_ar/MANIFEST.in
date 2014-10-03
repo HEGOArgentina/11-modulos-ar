@@ -1,9 +1,0 @@
-include INSTALL
-include README.md
-include TODO
-include COPYRIGHT
-include CHANGELOG
-include LICENSE
-include *.xml
-include *.odt
-include *.csv

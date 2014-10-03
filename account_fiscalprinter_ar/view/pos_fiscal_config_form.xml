@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of the account_fiscalprinter_ar module for Tryton.
+The COPYRIGHT file at the top level of this repository contains
+the full copyright notices and license terms. -->
+<form string="POS Fiscal Configuration">
+    <label name="pos"/>
+    <field name="pos"/>
+    <newline/>
+    <label name="pos_ip"/>
+    <field name="pos_ip"/>
+    <newline/>
+    <label name="is_fiscal"/>
+    <field name="is_fiscal"/>
+    <label name="pos_code"/>
+    <field name="pos_code"/>
+</form>

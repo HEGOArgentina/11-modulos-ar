@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!-- This file is part of the account_fiscalprinter_ar module for Tryton.
+The COPYRIGHT file at the top level of this repository contains
+the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+         <record model="res.group" id="group_fiscal_printer">
+            <field name="name">Fiscal Printer</field>
+        </record>
+
+        <record model="res.group" id="group_fiscal_printer_admin">
+            <field name="name">Fiscal Printer Administrator</field>
+        </record>
+
+        <menuitem name="Printer" parent="account.menu_account"
+            id="menu_fiscal_printer" sequence="21"/>
+
+        <record model="ir.ui.view" id="pos_fiscal_config_view_tree">
+            <field name="model">pos.fiscal.config</field>
+            <field name="type">tree</field>
+            <field name="name">pos_fiscal_config_tree</field>
+        </record>
+        <record model="ir.ui.view" id="pos_fiscal_config_view_form">
+            <field name="model">pos.fiscal.config</field>
+            <field name="type">form</field>
+            <field name="name">pos_fiscal_config_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_pos_fiscal_config_form">
+            <field name="name">POS Fiscal Configuration</field>
+            <field name="res_model">pos.fiscal.config</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_pos_fiscal_config_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="pos_fiscal_config_view_tree"/>
+            <field name="act_window" ref="act_pos_fiscal_config_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_pos_fiscal_config_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="pos_fiscal_config_view_form"/>
+            <field name="act_window" ref="act_pos_fiscal_config_form"/>
+        </record>
+        <menuitem parent="menu_fiscal_printer"
+            action="act_pos_fiscal_config_form" id="menu_pos_config"
+            sequence="0"/>
+        <record model="ir.ui.menu-res.group" id="menu_fiscal_printer_form_group_fiscal_printer_config">
+            <field name="menu" ref="menu_pos_config"/>
+            <field name="group" ref="group_fiscal_printer_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="cancel_open_view_form">
+            <field name="model">account.fiscalprinter.cancel_open.start</field>
+            <field name="type">form</field>
+            <field name="name">cancel_open_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_cancel_open">
+            <field name="name">Fiscal Cancel Open Document</field>
+            <field name="wiz_name">account.fiscalprinter.cancel_open</field>
+        </record>
+        <menuitem parent="menu_fiscal_printer"
+            action="act_cancel_open" id="menu_cancel_open" sequence="30"/>
+
+        <record model="ir.ui.menu-res.group" id="menu_fiscal_printer_form_group_fiscal_printer">
+            <field name="menu" ref="menu_cancel_open"/>
+            <field name="group" ref="group_fiscal_printer"/>
+        </record>
+
+        <record model="ir.ui.view" id="daily_close_view_form">
+            <field name="model">account.fiscalprinter.daily_close.start</field>
+            <field name="type">form</field>
+            <field name="name">daily_close_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_daily_close">
+            <field name="name">Fiscal Daily Close</field>
+            <field name="wiz_name">account.fiscalprinter.daily_close</field>
+        </record>
+        <menuitem parent="menu_fiscal_printer"
+            action="act_daily_close" id="menu_daily_close"/>
+
+        <record model="ir.ui.menu-res.group" id="menu_fiscal_printer_form_group_fiscal_printer_daily_close">
+            <field name="menu" ref="menu_daily_close"/>
+            <field name="group" ref="group_fiscal_printer"/>
+        </record>
+
+    </data>
+</tryton>
